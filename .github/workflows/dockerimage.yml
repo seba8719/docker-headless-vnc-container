@@ -25,4 +25,4 @@ jobs:
       - name: Push
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-vnc-chromedriver:${{ github.sha }}
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-vnc-chromedriverr:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-vnc-chromedriver:latest
