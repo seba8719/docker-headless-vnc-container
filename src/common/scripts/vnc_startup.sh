@@ -120,3 +120,6 @@ else
     echo "Executing command: '$@'"
     exec "$@"
 fi
+echo -e "\n\n------------------ Chrome Driver started ------------------"
+chromedriver --url-base=/wd/hub --port=4444
+
