@@ -14,9 +14,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Login to DockerHub Registry
-        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build the Docker image ubuntu vnc with chromedriver
         run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:latest
-      - name: Push the tagged Docker  image ubuntu vnc with chromedriver
-        run: docker push ubuntu-chromedriver:latest
+      - name: Tags
+        run: |
+          docker tag back ${{ secrets.DOCKER_USER }}/ubuntu-chromedriver:${{ github.sha }}
+          docker tag back ${{ secrets.DOCKER_USER }}/ubuntu-chromedriver:latest
+      - name: Push
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/ubuntu-chromedriver:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USER }}/ubuntu-chromedriver:latest
