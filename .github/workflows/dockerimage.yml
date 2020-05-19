@@ -20,4 +20,10 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the Docker image ubuntu vnc with chromedriver
-        run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:$(date +%s)
+        run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:${{steps.vars.outputs.tag}}
+      - name: Push the tagged Docker  image ubuntu vnc with chromedriver
+        run: docker push ubuntu-chromedriver:${{steps.vars.outputs.tag}}
+      - name: Build the Docker image ubuntu vnc with chromedriver
+        run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:latest
+      - name: Push the tagged Docker  image ubuntu vnc with chromedriver
+        run: docker push ubuntu-chromedriver:latest
