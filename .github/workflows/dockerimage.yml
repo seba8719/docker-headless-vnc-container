@@ -15,4 +15,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image ubuntu vnc with chromedriver
-      run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:$(date +%s)
+      uses: seba8719/docker-headless-vnc-container
+      with:
+        name: seba8719/ubuntu-vnc-chromedriver
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        dockerfile: Dockerfile.ubuntu.xfce.vnc
+
