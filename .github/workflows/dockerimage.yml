@@ -20,8 +20,8 @@ jobs:
         run: docker build . --file Dockerfile.ubuntu.xfce.vnc --tag ubuntu-chromedriver:latest
       - name: Tags
         run: |
-          docker tag back ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-chromedriver:${{ github.sha }}
-          docker tag back ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-chromedriver:latest
+          docker tag ubuntu-chromedriver ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-vnc-chromedriver:${{ github.sha }}
+          docker tag ubuntu-chromedriver ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-vnc-chromedriver:latest
       - name: Push
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/ubuntu-chromedriver:${{ github.sha }}
