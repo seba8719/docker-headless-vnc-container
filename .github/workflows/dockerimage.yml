@@ -28,3 +28,4 @@ jobs:
       - name: Push the latest Docker image
         run: docker push seba8719/ubuntu-vnc-chromedriver:latest
 
+
