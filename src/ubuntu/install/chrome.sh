@@ -7,7 +7,7 @@ apt-get update
 apt-get install -y chromium-browser chromium-browser-l10n chromium-codecs-ffmpeg
 apt-get clean -y
 ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
-wget https://chromedriver.storage.googleapis.com/70.0.3538.67/chromedriver_linux64.zip
+wget https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin/chromedriver
 chown root:root /usr/bin/chromedriver
